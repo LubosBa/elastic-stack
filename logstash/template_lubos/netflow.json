@@ -1,0 +1,128 @@
+{
+    "index_patterns": ["netflow*"],
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 1,
+        "refresh_interval": "5s"
+    },
+    "mappings": {
+        "doc": {
+            "dynamic": "strict",
+            "properties": {
+                "host": {
+                    "type": "ip"
+                },
+                "@version": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "keyword"
+                },
+                "tags": {
+                    "type": "keyword"
+                },
+                "@timestamp": {
+                    "type": "date"
+                },
+                "netflow": {
+                    "properties": {
+                        "last_switched": {
+                            "type": "date"
+                        },
+                        "protocol": {
+                            "type": "integer"
+                        },
+                        "first_switched": {
+                            "type": "date"
+                        },
+                        "ip_protocol_version": {
+                            "type": "integer"
+                        },
+                        "in_src_mac": {
+                            "type": "keyword"
+                        },
+                        "l4_src_port": {
+                            "type": "integer"
+                        },
+                        "flowset_id": {
+                            "type": "integer"
+                        },
+                        "l4_dst_port": {
+                            "type": "integer"
+                        },
+                        "in_bytes": {
+                            "type": "long"
+                        },
+                        "ipv4_dst_addr": {
+                            "type": "ip"
+                        },
+                        "tcp_flags": {
+                            "type": "integer"
+                        },
+                        "direction": {
+                            "type": "integer"
+                        },
+                        "version": {
+                            "type": "integer"
+                        },
+                        "in_dst_mac": {
+                            "type": "keyword"
+                        },
+                        "ipv4_src_addr": {
+                            "type": "ip"
+                        },
+                        "input_snmp": {
+                            "type": "long"
+                        },
+                        "flows": {
+                            "type": "integer"
+                        },
+                        "src_tos": {
+                            "type": "integer"
+                        },
+                        "src_vlan": {
+                            "type": "integer"
+                        },
+                        "in_pkts": {
+                            "type": "integer"
+                        },
+                        "output_snmp": {
+                            "type": "integer"
+                        },
+                        "flow_seq_num": {
+                            "type": "integer"
+                        },
+                        "out_dst_mac": {
+                            "type": "keyword"
+                        },
+                        "out_src_mac": {
+                            "type": "keyword"
+                        },
+                        "dst_vlan": {
+                            "type": "integer"
+                        },
+                        "mpls_label_stack_octets": {
+                            "properties": {
+                                "label": {
+                                    "type": "integer"
+                                },
+                                "ttl": {
+                                    "type": "integer"
+                                },
+                                "experimental": {
+                                    "type": "integer"
+                                },
+                                "bottom_of_stack": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "keyword"
+                }
+            }
+        }
+    }
+}
