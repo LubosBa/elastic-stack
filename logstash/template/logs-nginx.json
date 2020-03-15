@@ -1,0 +1,221 @@
+{
+    "index_patterns": [
+      "logs-nginx-*"
+    ],
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0,
+      "index.lifecycle.name": "logs-archive-policy",
+      "index.lifecycle.rollover_alias": "logs-nginx"
+    },
+    "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "host": {
+          "properties": {
+            "hostname": {
+              "type": "keyword"
+            }
+          }
+        },
+        "event": {
+          "properties": {
+            "kind": {
+              "type": "keyword"
+            },
+            "module": {
+              "type": "keyword"
+            },
+            "hash": {
+              "type": "keyword"
+            },
+            "category": {
+              "type": "keyword"
+            }
+          }
+        },
+        "http": {
+          "properties": {
+            "version": {
+              "type": "keyword"
+            },
+            "request": {
+              "properties": {
+                "method": {
+                  "type": "keyword"
+                },
+                "referrer": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "response": {
+              "properties": {
+                "bytes": {
+                  "type": "long"
+                },
+                "status_code": {
+                  "type": "long"
+                }
+              }
+            }
+          }
+        },
+        "file": {
+          "properties": {
+            "path": {
+              "type": "keyword"
+            }
+          }
+        },
+        "agent": {
+          "properties": {
+            "version": {
+              "type": "keyword"
+            },
+            "type": {
+              "type": "keyword"
+            },
+            "ephemeral_id": {
+              "type": "keyword"
+            },
+            "id": {
+              "type": "keyword"
+            }
+          }
+        },
+        "client": {
+          "properties": {
+            "ip": {
+              "type": "ip"
+            },
+            "geo": {
+              "properties": {
+                "country_code3": {
+                  "type": "keyword"
+                },
+                "country_iso_name": {
+                  "type": "keyword"
+                },
+                "region_iso_code": {
+                  "type": "keyword"
+                },
+                "region_name": {
+                  "type": "keyword"
+                },
+                "timezone": {
+                  "type": "keyword"
+                },
+                "continent_code": {
+                  "type": "keyword"
+                },
+                "country_name": {
+                  "type": "keyword"
+                },
+                "postal_code": {
+                  "type": "keyword"
+                },
+                "location": {
+                  "type": "geo_point"
+                },
+                "city_name": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "tls": {
+          "properties": {
+            "cipher": {
+              "type": "keyword"
+            },
+            "version_protocol": {
+              "type": "keyword"
+            },
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
+        "ecs": {
+          "properties": {
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
+        "url": {
+          "properties": {
+            "domain": {
+              "type": "keyword"
+            },
+            "path": {
+              "type": "keyword"
+            },
+            "query": {
+              "type": "keyword"
+            }
+          }
+        },
+        "user_agent": {
+          "properties": {
+            "version": {
+              "type": "keyword"
+            },
+            "original": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            },
+            "device": {
+              "properties": {
+                "name": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "os": {
+              "properties": {
+                "os_name": {
+                  "type": "keyword"
+                },
+                "os_major": {
+                  "type": "keyword"
+                },
+                "os_minor": {
+                  "type": "keyword"
+                },
+                "os": {
+                  "type": "keyword"
+                },
+                "build": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
+        "nginx": {
+          "properties": {
+            "upstream_connect_time": {
+              "type": "long"
+            },
+            "upstream_response_time": {
+              "type": "long"
+            },
+            "request_time": {
+              "type": "float"
+            },
+            "upstream_header_time": {
+              "type": "long"
+            }
+          }
+        },
+        "@timestamp": {
+          "type": "date"
+        }
+      }
+    }
+  }
